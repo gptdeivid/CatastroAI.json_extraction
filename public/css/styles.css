@@ -663,7 +663,7 @@ body {
     display: none;
     padding: var(--space-4);
     margin: 0;
-    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    font-family: var(--font-family);
     font-size: var(--font-size-sm);
     line-height: 1.7;
     overflow: auto;

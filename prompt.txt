@@ -142,7 +142,7 @@ Para **Contrato de Compraventa**:
     "representante": "string"
   },
   "comprador": {
-    "nombre": "string"
+    "nombre": "string",
     "estado_civil": "string"
   },
   "regimen_matrimonial": "string",

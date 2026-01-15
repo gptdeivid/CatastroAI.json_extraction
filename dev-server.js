@@ -62,9 +62,9 @@ async function handleExtract(req, res) {
 
         // Validate PDF
         const pdfBuffer = Buffer.from(pdfBase64, 'base64');
-        if (pdfBuffer.length > 10 * 1024 * 1024) {
+        if (pdfBuffer.length > 30 * 1024 * 1024) {
             res.writeHead(400, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ error: 'El archivo es demasiado grande. Máximo 10MB' }));
+            res.end(JSON.stringify({ error: 'El archivo es demasiado grande. Máximo 30MB' }));
             return;
         }
 

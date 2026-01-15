@@ -10,7 +10,7 @@ class FileUploader {
         this.progressFill = document.getElementById('progressFill');
         this.progressText = document.getElementById('progressText');
 
-        this.maxFileSize = options.maxFileSize || 50 * 1024 * 1024; // 50MB default
+        this.maxFileSize = options.maxFileSize || 30 * 1024 * 1024; // 30MB default
         this.allowedTypes = options.allowedTypes || ['application/pdf'];
 
         this.onFileSelected = options.onFileSelected || (() => { });
@@ -77,7 +77,6 @@ class FileUploader {
                 type: 'invalid_type',
                 message: 'Solo se permiten archivos PDF'
             });
-            this.reset(); // Reset input to allow re-upload
             return;
         }
 
@@ -101,7 +100,6 @@ class FileUploader {
                 type: 'file_too_large',
                 message: `El archivo es demasiado grande. Máximo ${maxMB}MB`
             });
-            this.reset(); // Reset input to allow re-upload
             return;
         }
 
@@ -113,7 +111,6 @@ class FileUploader {
                     type: 'invalid_content',
                     message: 'El archivo no es un PDF válido'
                 });
-                this.reset(); // Reset input to allow re-upload
                 return;
             }
         } catch (error) {
@@ -122,7 +119,6 @@ class FileUploader {
                 type: 'validation_error',
                 message: 'Error al validar el archivo. Por favor intenta de nuevo.'
             });
-            this.reset(); // Reset input to allow re-upload
             return;
         }
 

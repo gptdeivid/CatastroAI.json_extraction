@@ -56,10 +56,21 @@ class JSONViewer {
      * @returns {string} - HTML table
      */
     generateTableHTML(data) {
+        // Handle rawResponse - try to parse it if it's a string containing JSON
+        if (data && data.rawResponse && typeof data.rawResponse === 'string') {
+            try {
+                const parsed = JSON.parse(data.rawResponse);
+                data = parsed;
+            } catch (e) {
+                // If parsing fails, show as-is but wrapped nicely
+                console.warn('Could not parse rawResponse as JSON');
+            }
+        }
+
         // Handle array of objects (like multiple documents)
         if (Array.isArray(data)) {
             return data.map((item, index) => {
-                const title = item.CONTRACT_TYPE || item.tipo || `Documento ${index + 1}`;
+                const title = item.CONTRACT_TYPE || item.tipo_documento || item.tipo || `Documento ${index + 1}`;
                 return `
                     <div class="data-section">
                         <h3 class="section-title">${this.escapeHtml(title)}</h3>
@@ -69,8 +80,14 @@ class JSONViewer {
             }).join('');
         }
 
-        // Handle single object
-        return `<div class="data-section">${this.renderObject(data)}</div>`;
+        // Handle single object - use tipo_documento as title if available
+        const title = data.tipo_documento || data.CONTRACT_TYPE || 'Documento Extraído';
+        return `
+            <div class="data-section">
+                <h3 class="section-title">${this.escapeHtml(title)}</h3>
+                ${this.renderObject(data)}
+            </div>
+        `;
     }
 
     /**

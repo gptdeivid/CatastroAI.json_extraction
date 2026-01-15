@@ -102,8 +102,8 @@ export default async function handler(req, res) {
         // Decode base64
         const pdfBuffer = Buffer.from(pdfBase64, "base64");
 
-        // Validate file size (50MB max)
-        const MAX_SIZE = 50 * 1024 * 1024;
+        // Validate file size (30MB max)
+        const MAX_SIZE = 30 * 1024 * 1024;
         if (pdfBuffer.length > MAX_SIZE) {
             return res.status(400).json({
                 error: `El archivo es demasiado grande. Máximo ${MAX_SIZE / (1024 * 1024)}MB`
