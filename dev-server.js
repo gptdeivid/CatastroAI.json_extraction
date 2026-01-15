@@ -122,9 +122,35 @@ async function handleExtract(req, res) {
         // Parse and return result
         let result;
         try {
-            result = JSON.parse(responseText);
-        } catch {
-            result = { rawResponse: responseText };
+            // Clean markdown code blocks if present (```json ... ```)
+            let cleanedResponse = responseText.trim();
+
+            // Remove markdown code block markers
+            if (cleanedResponse.startsWith('```')) {
+                // Remove opening ```json or ``` 
+                cleanedResponse = cleanedResponse.replace(/^```(?:json)?\s*\n?/, '');
+                // Remove closing ```
+                cleanedResponse = cleanedResponse.replace(/\n?```\s*$/, '');
+            }
+
+            result = JSON.parse(cleanedResponse);
+            console.log('JSON parsed successfully');
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError.message);
+            console.log('Raw response preview:', responseText.substring(0, 200));
+
+            // Try to extract JSON from the response if it's embedded in text
+            const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                try {
+                    result = JSON.parse(jsonMatch[0]);
+                    console.log('JSON extracted from embedded text');
+                } catch {
+                    result = { rawResponse: responseText, parseError: 'No se pudo parsear el JSON' };
+                }
+            } else {
+                result = { rawResponse: responseText, parseError: 'No se encontró JSON válido' };
+            }
         }
 
         console.log(`Successfully processed ${filename || 'document'}`);

@@ -167,11 +167,33 @@ export default async function handler(req, res) {
         // Parse JSON response
         let parsedResult;
         try {
-            parsedResult = JSON.parse(responseText);
+            // Clean markdown code blocks if present (```json ... ```)
+            let cleanedResponse = responseText.trim();
+
+            // Remove markdown code block markers
+            if (cleanedResponse.startsWith('```')) {
+                cleanedResponse = cleanedResponse.replace(/^```(?:json)?\s*\n?/, '');
+                cleanedResponse = cleanedResponse.replace(/\n?```\s*$/, '');
+            }
+
+            parsedResult = JSON.parse(cleanedResponse);
+            console.log('JSON parsed successfully');
         } catch (parseError) {
-            console.error("Failed to parse Gemini response:", parseError);
-            // Return raw text if JSON parsing fails
-            parsedResult = { rawResponse: responseText };
+            console.error("Failed to parse Gemini response:", parseError.message);
+            console.log('Raw response preview:', responseText.substring(0, 200));
+
+            // Try to extract JSON from the response if embedded in text
+            const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                try {
+                    parsedResult = JSON.parse(jsonMatch[0]);
+                    console.log('JSON extracted from embedded text');
+                } catch {
+                    parsedResult = { rawResponse: responseText, parseError: 'No se pudo parsear el JSON' };
+                }
+            } else {
+                parsedResult = { rawResponse: responseText, parseError: 'No se encontró JSON válido' };
+            }
         }
 
         console.log(`Successfully processed ${filename || "document"}`);

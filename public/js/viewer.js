@@ -58,12 +58,27 @@ class JSONViewer {
     generateTableHTML(data) {
         // Handle rawResponse - try to parse it if it's a string containing JSON
         if (data && data.rawResponse && typeof data.rawResponse === 'string') {
-            try {
-                const parsed = JSON.parse(data.rawResponse);
-                data = parsed;
-            } catch (e) {
-                // If parsing fails, show as-is but wrapped nicely
-                console.warn('Could not parse rawResponse as JSON');
+            let rawText = data.rawResponse;
+
+            // Try to clean markdown code blocks
+            if (rawText.includes('```')) {
+                rawText = rawText.replace(/```(?:json)?\s*\n?/g, '').replace(/\n?```/g, '');
+            }
+
+            // Try to extract and parse JSON
+            const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                try {
+                    data = JSON.parse(jsonMatch[0]);
+                    console.log('Successfully parsed JSON from rawResponse');
+                } catch (e) {
+                    console.warn('Could not parse rawResponse as JSON:', e.message);
+                    // Show error message with raw content
+                    return this.renderErrorState(data.parseError || 'Error al parsear la respuesta', rawText);
+                }
+            } else {
+                // No JSON found - show as formatted text
+                return this.renderErrorState(data.parseError || 'Respuesta no estructurada', rawText);
             }
         }
 
@@ -86,6 +101,31 @@ class JSONViewer {
             <div class="data-section">
                 <h3 class="section-title">${this.escapeHtml(title)}</h3>
                 ${this.renderObject(data)}
+            </div>
+        `;
+    }
+
+    /**
+     * Render an error state with the raw response
+     * @param {string} errorMessage - Error message to display
+     * @param {string} rawContent - Raw content to show
+     * @returns {string} - HTML for error state
+     */
+    renderErrorState(errorMessage, rawContent) {
+        return `
+            <div class="data-section error-section">
+                <div class="error-banner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <span>${this.escapeHtml(errorMessage)}</span>
+                </div>
+                <div class="raw-response">
+                    <h4>Respuesta del modelo:</h4>
+                    <pre class="raw-content">${this.escapeHtml(rawContent)}</pre>
+                </div>
             </div>
         `;
     }

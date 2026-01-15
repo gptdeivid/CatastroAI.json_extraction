@@ -777,6 +777,56 @@ body {
     font-size: var(--font-size-xs);
 }
 
+/* Error State */
+.error-section {
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid var(--color-error);
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+.error-banner svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.raw-response {
+    padding: var(--space-4);
+}
+
+.raw-response h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+}
+
+.raw-content {
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: var(--font-size-xs);
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+    color: var(--color-text-primary);
+}
 
 /* ============================================
    Buttons
