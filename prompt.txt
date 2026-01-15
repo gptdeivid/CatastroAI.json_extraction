@@ -138,7 +138,6 @@ Para **Contrato de Compraventa**:
   "tipo_documento": "Contrato Compraventa",
   "vendedor": {
     "nombre": "string",
-    "curp": "string",
     "representante": "string"
   },
   "comprador": {
