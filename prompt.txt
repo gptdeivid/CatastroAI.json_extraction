@@ -139,13 +139,10 @@ Para **Contrato de Compraventa**:
   "vendedor": {
     "nombre": "string",
     "curp": "string",
-    "rfc": "string",
     "representante": "string"
   },
   "comprador": {
-    "nombre": "string",
-    "curp": "string",
-    "rfc": "string",
+    "nombre": "string"
     "estado_civil": "string"
   },
   "regimen_matrimonial": "string",
