@@ -227,7 +227,7 @@ class FileUploader {
         try {
             // Convert to base64
             const base64 = await this.fileToBase64(file);
-            this.updateProgress(30, 'Enviando a Gemini AI...');
+            this.updateProgress(30, 'Enviando a Modelo de AI...');
 
             // Send to API
             const response = await fetch('/api/extract', {
