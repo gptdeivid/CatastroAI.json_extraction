@@ -1,55 +1,66 @@
-[
-  {
-    "tipo_documento": "Contrato de Compraventa / Registro de Propiedad",
-    "reporte_cedula_catastral_registro_propiedad": {
-      "clave_catastral": "4000-10-30",
-      "numero_predio_cuenta_predial": "No se especifica en el documento",
-      "propietarios_registrales": [
-        "Misael Soto Esparza",
-        "Andrea Fuerte Gaspar"
-      ],
-      "domicilio_del_inmueble": {
-        "calle_y_numero": "Lote de terreno marcado con el número 1 de la manzana No. R39",
-        "colonia_o_fraccionamiento": "Fraccionamiento denominado Nuevo Amanecer I Sector (FOMERREY No. 104)",
-        "codigo_postal": "No se especifica en el documento",
-        "municipio_o_alcaldia": "Apodaca",
-        "estado": "Nuevo León"
-      },
-      "superficies_del_inmueble": {
-        "superficie_del_terreno": "115.50 m²",
-        "superficie_de_construccion": "No se especifica en el documento",
-        "superficie_total": "115.50 m²"
-      },
-      "medidas_y_colindancias": {
-        "al_norte": "Mide 8.00 metros y colinda con Calle Bulgaria.",
-        "al_sur": "Mide 8.00 metros y colinda con Lote 25.",
-        "al_este_oriente": "Mide 15.00 metros y colinda con Lote 2.",
-        "al_oeste_poniente": "Mide 15.00 metros y colinda con Calle Gran Bretaña."
-      },
-      "valores_catastrales_de_operacion": {
-        "valor_del_suelo": "No se especifica de forma desglosada",
-        "valor_de_la_construccion": "No se especifica en el documento",
-        "valor_catastral_total_precio_de_la_operacion": "$47,795.00 (Cuarenta y siete mil setecientos noventa y cinco pesos 00/100 M.N.)",
-        "notas_valor": "Monto pactado al 11 de diciembre de 1992 (pesos anteriores a la reforma monetaria de 1993)."
-      },
-      "informacion_adicional_del_documento": {
-        "urbanizacion": "Considerado de urbanización progresiva.",
-        "situacion_juridica": "Se declara libre de gravamen según certificado del Registrador Público.",
-        "pago_isai": "Recibo oficial No. 08099 por la cantidad de $45,000.00 (Cuarenta y cinco mil pesos 00/100 M.N.) pagado en la Tesorería Municipal de Apodaca el 15 de octubre de 1992.",
-        "vendedor": "Nacional Financiera S.N.C. (Banca de Desarrollo) como fiduciaria del Fideicomiso FOMERREY.",
-        "representante_vendedor": "C.P. Isaías Álvarez Olivos, Director Ejecutivo.",
-        "datos_generales_compradores": "Misael Soto Esparza (mexicano, mayor de edad, casado, empleado) y Andrea Fuerte Gaspar (mexicana, mayor de edad, casada, hogar)."
-      },
-      "datos_de_registro_publico": {
-        "folio_real_inscripcion": "Inscripción No. 502, Volumen 47, Libro 11, Sección Propiedad, Unidad Apodaca.",
-        "fecha_de_registro": "18 de enero de 1993",
-        "fecha_de_escritura_contrato": "11 de diciembre de 1992",
-        "lugar_registro": "Primer Distrito, Monterrey, N.L."
+{
+  "reporte_contrato_compraventa": {
+    "vendedores": [
+      {
+        "nombre": "Nacional Financiera, Sociedad Nacional de Crédito (Banca de Desarrollo), como Fiduciaria del Fideicomiso denominado Fomento Metropolitano de Monterrey (FOMERREY)",
+        "representante_legal": "C.P. Isaias Alvarez Olivos (Director Ejecutivo)",
+        "curp": "No se especifica en el documento",
+        "rfc": "AAOI-380125-R91"
       }
+    ],
+    "compradores": [
+      {
+        "nombre": "Misael Soto Esparza",
+        "curp": "No se especifica en el documento",
+        "rfc": "SOEM-480830-U91"
+      },
+      {
+        "nombre": "Andrea Fuerte Gaspar",
+        "curp": "No se especifica en el documento",
+        "rfc": "No se especifica en el documento"
+      }
+    ],
+    "regimen_matrimonial": "No se especifica formalmente, aunque se menciona que ambos compradores son de estado civil casado.",
+    "descripcion_del_inmueble": {
+      "lote": "1",
+      "manzana": "39",
+      "tipo_de_predio": "Urbanización Progresiva (Terreno de FOMERREY)",
+      "estado": "Nuevo León",
+      "ubicacion": "Ubicado en el Fraccionamiento denominado Nuevo Amanecer I Sector, en el Municipio de Apodaca, N.L., identificado como Lote 1 de la Manzana 39 de FOMERREY No. 104.",
+      "superficie_total": "115.50 m²"
     },
-    "notas_transcriptor": {
-      "contexto_legal": "El documento es un contrato privado de compraventa que se eleva a registro público. Menciona facultades otorgadas mediante la escritura pública 84,966 ante el Notario Público 15 del Distrito Federal, Eduardo García Villegas.",
-      "sellos_visibles": "Sello de la Tesorería Municipal de Apodaca con leyenda 'PAGADO' con fecha de octubre de 1992; sello del Registro Público de la Propiedad y del Comercio del Primer Distrito de Monterrey, N.L."
+    "medidas_y_colindancias": {
+      "al_norte": "Mide 8.00 metros y colinda con Calle Bulgaria",
+      "al_sur": "Mide 8.00 metros y colinda con Lote 25",
+      "al_este": "Mide 15.00 metros y colinda con Lote 2",
+      "al_oeste": "Mide 15.00 metros y colinda con Calle Gran Bretaña"
+    },
+    "precio_de_operacion": "$247,795.00 (Doscientos cuarenta y siete mil setecientos noventa y cinco pesos 00/100 M.N.)",
+    "datos_notariales": {
+      "numero_de_escritura": "84,966 (Referida para acreditar la personalidad de la fiduciaria)",
+      "notario_nombre": "Eduardo García Villegas",
+      "notario_numero": "15",
+      "lugar": "Distrito Federal (ahora Ciudad de México)",
+      "fecha_de_la_escritura": "2 de abril de 1992"
+    },
+    "datos_de_registro_publico_anterior": {
+      "inscripcion_anterior": "502",
+      "volumen_anterior": "47",
+      "libro_anterior": "11",
+      "fecha_anterior": "18 de enero de 1993",
+      "seccion": "Propiedad",
+      "unidad": "Apodaca"
+    },
+    "situacion_juridica": "Se declara que el lote se encuentra libre de gravamen según certificado expedido por el Registrador Público de la Propiedad y del Comercio.",
+    "datos_adicionales_del_documento": {
+      "fecha_del_contrato": "11 de diciembre de 1992",
+      "lugar_de_celebracion": "Monterrey, Nuevo León",
+      "recibo_municipal": "Recibo No. 08099 por la cantidad de $45,000.00 pesos con fecha 15 de octubre de 1992, Clave 4000-10-30",
+      "funcionario_registrador": "Lic. Jorge L. Fernández Cavazos (Cuarto Registrador Público de la Propiedad y del Comercio)"
+    },
+    "campos_tecnicos": {
+      "campos_extraidos": "Extracción automática y validación manual de datos registrales y técnicos.",
+      "confianza_ocr": "Alta; el documento presenta texto mecanografiado legible y sellos oficiales claros."
     }
   }
-]
+}

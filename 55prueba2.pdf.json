@@ -1,0 +1,60 @@
+[
+  {
+    "tipo_documento": "Contrato de Compra Venta / Escritura Privada",
+    "titulo_documento": "Escritura Privada de Compra Venta - FOMERREY",
+    "reporte_de_contrato_compra_venta": {
+      "clave_catastral_referencia": "4000-10-30",
+      "numero_de_predio_cuenta": "Lote 1, Manzana R39",
+      "propietarios_registrales_actuales_compradores": [
+        "Misael Soto Esparza",
+        "Andrea Fuerte Gaspar"
+      ],
+      "vendedor": "Nacional Financiera S.N.C., Fiduciaria del Fideicomiso Fomento Metropolitano de Monterrey (FOMERREY)",
+      "domicilio_del_inmueble": {
+        "calle_y_numero": "Esquina Calle Bulgaria y Calle Gran Bretaña",
+        "colonia_o_fraccionamiento": "Nuevo Amanecer I Sector",
+        "codigo_postal": "No se especifica en el documento",
+        "municipio_o_alcaldia": "Apodaca",
+        "estado": "Nuevo León"
+      },
+      "superficies_del_inmueble": {
+        "superficie_del_terreno": "115.50 m²",
+        "superficie_de_construccion": "No se especifica en el documento",
+        "superficie_total": "115.50 m²"
+      },
+      "medidas_y_colindancias": {
+        "al_norte": "Mide 8.00 metros y colinda con Calle Bulgaria",
+        "al_sur": "Mide 8.00 metros y colinda con Lote 25",
+        "al_este": "Mide 15.00 metros y colinda con Lote 2",
+        "al_oeste": "Mide 15.00 metros y colinda con Calle Gran Bretaña"
+      },
+      "valores_y_precios": {
+        "precio_de_operacion": "$247,795.00 (Doscientos cuarenta y siete mil setecientos noventa y cinco pesos 00/100 M.N.)",
+        "monto_recibo_tesoreria": "$45,000.00 M.N. (Recibo 08099)"
+      },
+      "datos_de_registro_publico": {
+        "folio_real": "No se especifica (Inscripción No. 502)",
+        "numero_de_inscripcion": "502",
+        "libro": "11",
+        "seccion": "Propiedad",
+        "unidad": "Apodaca",
+        "fecha_de_registro": "18 de enero de 1993",
+        "lugar_de_inscripcion": "Monterrey, Nuevo León"
+      }
+    },
+    "campos_adicionales": {
+      "lote": "1",
+      "manzana": "R39",
+      "tipo_de_predio": "Urbanización Progresiva",
+      "vendedor_rfc": "AAOI-380125-R91 (RFC del representante Isaias Alvarez Olivos)",
+      "comprador_1_datos": "Misael Soto Esparza, Casado, nacido el 30 de agosto de 1948",
+      "comprador_2_datos": "Andrea Fuerte Gaspar, Casada, nacida el 04 de febrero de 1953",
+      "regimen_matrimonial": "Casados (Sociedad Conyugal implícita)",
+      "notario_nombre": "Lic. Pablo H. Quiroga Garza (Referencia antecedente)",
+      "notario_numero": "57",
+      "funcionario_que_certifica": "Lic. Jorge L. Fernandez Cavazos (Registrador Público)",
+      "campos_extraidos": "Sí",
+      "confianza_ocr": "Alta"
+    }
+  }
+]

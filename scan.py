@@ -42,14 +42,7 @@ def read_prompt_from_file(file_path: Path) -> str:
 
 
 def get_prompt(args) -> str:
-    # Support custom prompt file via environment variable or argument
-    custom_prompt_path = os.getenv("CUSTOM_PROMPT_PATH") or getattr(args, 'prompt_file', None)
-    if custom_prompt_path:
-        prompt_path = Path(custom_prompt_path)
-        if prompt_path.exists():
-            return read_prompt_from_file(prompt_path)
-
-    # Default to prompt.txt
+    # TODO: It would be nice to support custom args, stdin etc.
     default_prompt_path = Path(__file__).parent / "prompt.txt"
     return read_prompt_from_file(default_prompt_path)
 
@@ -89,9 +82,6 @@ def main():
     )
     parser.add_argument(
         "--overwrite", action="store_true", help="Overwrite existing JSON files"
-    )
-    parser.add_argument(
-        "--prompt-file", help="Path to custom prompt file (overrides default prompt.txt)"
     )
 
     args = parser.parse_args()
