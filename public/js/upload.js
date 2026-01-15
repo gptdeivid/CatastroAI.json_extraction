@@ -10,7 +10,9 @@ class FileUploader {
         this.progressFill = document.getElementById('progressFill');
         this.progressText = document.getElementById('progressText');
 
-        this.maxFileSize = options.maxFileSize || 30 * 1024 * 1024; // 30MB default
+        // Detect if running locally or on Vercel Hobby (which has a 4.5MB limit)
+        this.isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        this.maxFileSize = options.maxFileSize || (this.isLocal ? 30 * 1024 * 1024 : 4 * 1024 * 1024); // 30MB local, 4MB Vercel Hobby
         this.allowedTypes = options.allowedTypes || ['application/pdf'];
 
         this.onFileSelected = options.onFileSelected || (() => { });
@@ -95,10 +97,11 @@ class FileUploader {
 
         // Validate file size
         if (file.size > this.maxFileSize) {
-            const maxMB = this.maxFileSize / (1024 * 1024);
+            const maxMB = (this.maxFileSize / (1024 * 1024)).toFixed(1);
+            const envMessage = this.isLocal ? "" : " (Límite de Vercel Hobby)";
             this.onUploadError({
                 type: 'file_too_large',
-                message: `El archivo es demasiado grande. Máximo ${maxMB}MB`
+                message: `El archivo es demasiado grande. Máximo ${maxMB}MB${envMessage}`
             });
             return;
         }

@@ -83,6 +83,10 @@ export default async function handler(req, res) {
         req.socket?.remoteAddress ||
         "anonymous";
 
+    console.log(`[DEBUG] Received API request: ${req.method} ${req.url}`);
+    console.log(`[DEBUG] Content-Length: ${req.headers['content-length']} bytes`);
+    console.log(`[DEBUG] Request Body Keys: ${Object.keys(req.body || {})}`);
+
     // Check rate limit
     if (!checkRateLimit(ip)) {
         return res.status(429).json({
