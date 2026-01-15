@@ -45,11 +45,22 @@ try {
  * Handle API extraction request
  */
 async function handleExtract(req, res) {
+    console.log(`[DEBUG] Received API request: ${req.method} ${req.url}`);
+    console.log(`[DEBUG] Content-Length: ${req.headers['content-length']} bytes`);
+
     // Parse JSON body
     let body = '';
+    let receivedBytes = 0;
+
     for await (const chunk of req) {
         body += chunk;
+        receivedBytes += chunk.length;
+        if (receivedBytes % (1024 * 1024) === 0) {
+            console.log(`[DEBUG] Received ${receivedBytes / (1024 * 1024)}MB...`);
+        }
     }
+
+    console.log(`[DEBUG] Total body received: ${receivedBytes} bytes`);
 
     try {
         const { pdfBase64, filename } = JSON.parse(body);
