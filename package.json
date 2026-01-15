@@ -1,0 +1,33 @@
+{
+    "name": "catastro-ai",
+    "version": "1.0.0",
+    "description": "Extractor inteligente de datos de documentos catastrales mexicanos usando Google Gemini AI",
+    "type": "module",
+    "scripts": {
+        "dev": "node dev-server.js",
+        "vercel-dev": "vercel dev",
+        "build": "echo 'No build step required for static site'",
+        "start": "node dev-server.js",
+        "deploy": "vercel --prod"
+    },
+    "dependencies": {
+        "@google/genai": "^1.0.0",
+        "dotenv": "^16.6.1"
+    },
+    "devDependencies": {
+        "vercel": "^39.0.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "gemini",
+        "ocr",
+        "pdf",
+        "catastro",
+        "document-extraction",
+        "ai"
+    ],
+    "author": "",
+    "license": "MIT"
+}
