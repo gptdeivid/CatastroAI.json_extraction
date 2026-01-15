@@ -6,13 +6,17 @@
     "scripts": {
         "dev": "node dev-server.js",
         "vercel-dev": "vercel dev",
-        "build": "echo 'No build step required for static site'",
-        "start": "node dev-server.js",
-        "deploy": "vercel --prod"
+        "build": "echo 'No build step required'",
+        "start": "node server.js",
+        "start:dev": "node dev-server.js",
+        "deploy": "vercel --prod",
+        "docker:build": "docker build -t catastro-ai .",
+        "docker:run": "docker run -p 8080:8080 --env-file .env catastro-ai"
     },
     "dependencies": {
         "@google/genai": "^1.0.0",
-        "dotenv": "^16.6.1"
+        "dotenv": "^16.6.1",
+        "express": "^4.22.1"
     },
     "devDependencies": {
         "vercel": "^39.0.0"
