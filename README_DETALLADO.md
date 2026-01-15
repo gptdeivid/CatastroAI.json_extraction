@@ -1,9 +1,11 @@
-# 📄 Gemini JSON OCR - Extractor de Datos Catastrales
+# 📄 Catastro AI - Extractor de Datos
+
+![Catastro AI Hero](file:///C:/Users/cuell/.gemini/antigravity/brain/30597548-26bd-49d2-acb8-95b75b3f8068/catastro_ai_hero_1768461773991.png)
 
 > **Sistema de extracción inteligente de información de documentos legales y catastrales mexicanos utilizando Google Gemini AI**
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
-[![Gemini AI](https://img.shields.io/badge/Gemini-3%20Flash-orange.svg)](https://ai.google.dev/)
+[![Gemini AI](https://img.shields.io/badge/Gemini-2.0%20Flash-orange.svg)](https://ai.google.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---

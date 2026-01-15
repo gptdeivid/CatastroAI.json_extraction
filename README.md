@@ -1,53 +1,86 @@
-# Gemini JSON OCR
+# 📄 Catastro AI: Gemini JSON OCR
 
-Gemini JSON OCR is a **proof of concept** showing how easy it is to use
-[the latest Google Gemini](https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/)
-to extract structured JSONs from documents.
+![Catastro AI Hero](file:///C:/Users/cuell/.gemini/antigravity/brain/30597548-26bd-49d2-acb8-95b75b3f8068/catastro_ai_hero_1768461773991.png)
 
-## Usage
+> **Transform complex legal and cadastral documents into structured JSON data using the power of Google Gemini AI.**
 
-```zsh
-$ export GOOGLE_API_KEY=<get your API key at https://aistudio.google.com/app/apikey>
-$ uv run scan.py C:\Users\cuell\OneDrive\Escritorio\prueba.pdf"
-INFO:root:Processing file: MX-C304W_16122024_143019.pdf
-Results for MX-C304W_16122024_143019.pdf have been written to /Users/maurycy/Desktop/test/MX-C304W_16122024_143019.pdf.json
+Catastro AI is a modern solution for intelligent document processing (IDP). It leverages [Google Gemini](https://ai.google.dev/) to analyze visual documents (PDFs, images) and extract precise, structured information without the need for manual data entry or complex rule-based OCR.
+
+---
+
+## ✨ Features
+
+- 🔍 **Intelligent OCR**: Powered by Gemini 2.0 Flash for superior visual understanding.
+- 📊 **Structured Output**: Direct transformation of documents into validated JSON.
+- 🇲🇽 **Mexican Document Focus**: Optimized for Cédulas Catastrales, Actas Constitutivas, and more.
+- 🚀 **Dual Interface**: Use it via the elegant **Web UI** or the powerful **CLI script**.
+- ⚡ **Vercel Ready**: Built to be deployed instantly as a serverless application.
+
+---
+
+## 🏗 Architecture
+
+```mermaid
+graph LR
+    User([User]) --> Input{Document}
+    Input --> Web[Web Interface]
+    Input --> CLI[CLI Scanner]
+    Web --> API[Vercel Serverless Function]
+    CLI --> Python[scan.py]
+    API --> Gemini((Google Gemini API))
+    Python --> Gemini
+    Gemini --> JSON[Structured JSON]
+    JSON --> Output([Automated Systems])
 ```
 
-Resulting in a JSON, such as:
+---
 
-```json
-{
-  "waybill": {
-    "scac": "SEAU",
-    "booking_no": "4803804131",
-    "bl_no": "4803804131",
-    "vessel": "MERIDIAN",
-    "containers": [ "TLLU5242619", "MSKU829454" ]
-  }
-}
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- Get your **Google API Key** at [Google AI Studio](https://aistudio.google.com/app/apikey).
+- (For CLI) Install [uv](https://docs.astral.sh/uv/):
+  ```powershell
+  # Windows
+  powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+  ```
+
+### 2. Configuration
+Create a `.env` file:
+```env
+GOOGLE_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.0-flash
 ```
 
-## Getting Started
+### 3. Usage
 
-Make sure that you've got [uv](https://docs.astral.sh/uv/)
-[installed](https://docs.astral.sh/uv/getting-started/installation/):
+#### **Option A: Web Interface (Recommended)**
+```bash
+npm install
+npm run dev
+```
+Open `http://localhost:3000` to start uploading documents.
 
-```zsh
-# macOS
-brew install uv
-# macOS or Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-# Windows
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+#### **Option B: CLI Scanner**
+```bash
+uv run scan.py "C:\path\to\your\pdfs"
 ```
 
-(No need to install Python etc. `uv` will take care of that!)
+---
 
-## Advanced usage
+## 📖 Documentation
 
-The prompt is in the `prompt.txt`.
+- [**Guía Detallada (Español)**](file:///c:/Users/cuell/OneDrive/Documentos/Code/Gemini-Json-OCR/gemini-json-ocr-main/gemini-json-ocr-main/README_DETALLADO.md) - Full technical specifications and architecture.
+- [**Deployment Guide**](file:///c:/Users/cuell/OneDrive/Documentos/Code/Gemini-Json-OCR/gemini-json-ocr-main/gemini-json-ocr-main/DEPLOY_VERCEL.md) - How to host your own instance.
 
-Supported environment variables:
+---
 
-- `GEMINI_MODEL`, by default `gemini-2.0-flash-exp`
-- `GOOGLE_API_KEY`, to be retrieved from [Google AI Studio](https://aistudio.google.com/app/apikey)
+## 🛠 Advanced Usage
+
+The extraction logic is governed by `prompt.txt`. You can customize this file to add support for new document types or change the JSON schema requirements.
+
+---
+
+## 📄 License
+
+MIT License - Copyright (c) 2026 Catastro AI Team
