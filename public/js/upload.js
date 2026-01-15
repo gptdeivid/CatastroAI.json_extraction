@@ -10,7 +10,7 @@ class FileUploader {
         this.progressFill = document.getElementById('progressFill');
         this.progressText = document.getElementById('progressText');
 
-        this.maxFileSize = options.maxFileSize || 10 * 1024 * 1024; // 10MB default
+        this.maxFileSize = options.maxFileSize || 50 * 1024 * 1024; // 50MB default
         this.allowedTypes = options.allowedTypes || ['application/pdf'];
 
         this.onFileSelected = options.onFileSelected || (() => { });
@@ -70,13 +70,28 @@ class FileUploader {
      * @param {File} file - The file to process
      */
     async handleFile(file) {
-        // Validate file type
-        if (!this.allowedTypes.includes(file.type)) {
+        // Validate file extension first (more reliable than MIME type)
+        const fileName = file.name.toLowerCase();
+        if (!fileName.endsWith('.pdf')) {
             this.onUploadError({
                 type: 'invalid_type',
                 message: 'Solo se permiten archivos PDF'
             });
+            this.reset(); // Reset input to allow re-upload
             return;
+        }
+
+        // Validate file type (allow common PDF MIME types and empty/octet-stream)
+        const validMimeTypes = [
+            'application/pdf',
+            'application/x-pdf',
+            'application/octet-stream',
+            '' // Some systems don't set MIME type
+        ];
+
+        if (!validMimeTypes.includes(file.type)) {
+            console.warn(`Unusual MIME type detected: ${file.type}, but filename is .pdf`);
+            // Don't reject - filename extension is more reliable
         }
 
         // Validate file size
@@ -86,16 +101,28 @@ class FileUploader {
                 type: 'file_too_large',
                 message: `El archivo es demasiado grande. Máximo ${maxMB}MB`
             });
+            this.reset(); // Reset input to allow re-upload
             return;
         }
 
         // Validate PDF magic bytes
-        const isValidPDF = await this.validatePDFContent(file);
-        if (!isValidPDF) {
+        try {
+            const isValidPDF = await this.validatePDFContent(file);
+            if (!isValidPDF) {
+                this.onUploadError({
+                    type: 'invalid_content',
+                    message: 'El archivo no es un PDF válido'
+                });
+                this.reset(); // Reset input to allow re-upload
+                return;
+            }
+        } catch (error) {
+            console.error('Error validating PDF content:', error);
             this.onUploadError({
-                type: 'invalid_content',
-                message: 'El archivo no es un PDF válido'
+                type: 'validation_error',
+                message: 'Error al validar el archivo. Por favor intenta de nuevo.'
             });
+            this.reset(); // Reset input to allow re-upload
             return;
         }
 
@@ -108,15 +135,40 @@ class FileUploader {
      * @returns {Promise<boolean>} - True if valid PDF
      */
     async validatePDFContent(file) {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
+            // Add timeout to prevent hanging
+            const timeout = setTimeout(() => {
+                reject(new Error('PDF validation timeout'));
+            }, 5000); // 5 second timeout
+
             const reader = new FileReader();
+
             reader.onload = (e) => {
-                const arr = new Uint8Array(e.target.result).subarray(0, 4);
-                const header = String.fromCharCode.apply(null, arr);
-                resolve(header === '%PDF');
+                clearTimeout(timeout);
+                try {
+                    const arr = new Uint8Array(e.target.result).subarray(0, 5);
+                    const header = String.fromCharCode.apply(null, arr);
+                    // Check for %PDF- (more complete validation)
+                    resolve(header.startsWith('%PDF'));
+                } catch (error) {
+                    console.error('Error reading PDF header:', error);
+                    resolve(false);
+                }
             };
-            reader.onerror = () => resolve(false);
-            reader.readAsArrayBuffer(file.slice(0, 4));
+
+            reader.onerror = (error) => {
+                clearTimeout(timeout);
+                console.error('FileReader error:', error);
+                reject(error);
+            };
+
+            // Read first 5 bytes to check for %PDF-
+            try {
+                reader.readAsArrayBuffer(file.slice(0, 5));
+            } catch (error) {
+                clearTimeout(timeout);
+                reject(error);
+            }
         });
     }
 

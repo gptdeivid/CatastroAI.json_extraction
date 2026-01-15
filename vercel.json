@@ -50,7 +50,8 @@
     "functions": {
         "api/extract.js": {
             "memory": 1024,
-            "maxDuration": 60
+            "maxDuration": 60,
+            "maxRequestBodySize": "50mb"
         }
     }
 }

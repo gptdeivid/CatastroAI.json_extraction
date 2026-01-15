@@ -154,67 +154,23 @@ class CatastroApp {
                         <div class="cache-item-name" title="${doc.filename}">${doc.filename}</div>
                         <div class="cache-item-date">${this.formatDate(doc.timestamp)}</div>
                     </div>
-                    <button class="cache-item-delete" data-hash="${doc.hash}" title="Eliminar documento">
+                    <div class="cache-item-status">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="3 6 5 6 21 6"/>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                            <line x1="10" y1="11" x2="10" y2="17"/>
-                            <line x1="14" y1="11" x2="14" y2="17"/>
+                            <polyline points="20 6 9 17 4 12"/>
                         </svg>
-                    </button>
+                    </div>
                 </li>
             `).join('');
 
-            // Add click handlers for items
+            // Add click handlers
             this.cacheList.querySelectorAll('.cache-item').forEach(item => {
-                item.addEventListener('click', (e) => {
-                    // Don't trigger if clicking delete button
-                    if (!e.target.closest('.cache-item-delete')) {
-                        this.loadFromCache(item.dataset.hash);
-                    }
-                });
-            });
-
-            // Add click handlers for delete buttons
-            this.cacheList.querySelectorAll('.cache-item-delete').forEach(button => {
-                button.addEventListener('click', async (e) => {
-                    e.stopPropagation(); // Prevent item click
-                    const hash = button.dataset.hash;
-                    await this.deleteFromCache(hash);
+                item.addEventListener('click', () => {
+                    this.loadFromCache(item.dataset.hash);
                 });
             });
 
         } catch (error) {
             console.error('Error refreshing cache list:', error);
-        }
-    }
-
-    /**
-     * Delete a specific document from cache
-     * @param {string} hash 
-     */
-    async deleteFromCache(hash) {
-        try {
-            const cached = await this.cache.get(hash);
-            if (!cached) return;
-
-            if (!confirm(`¿Eliminar "${cached.filename}" del caché?`)) {
-                return;
-            }
-
-            await this.cache.delete(hash);
-            await this.refreshCacheList();
-
-            // Clear viewer if the deleted item was being displayed
-            const activeItem = this.cacheList.querySelector('.cache-item.active');
-            if (activeItem && activeItem.dataset.hash === hash) {
-                this.viewer.clear();
-            }
-
-            this.showToast('success', 'Documento eliminado del caché');
-        } catch (error) {
-            console.error('Error deleting from cache:', error);
-            this.showToast('error', 'Error al eliminar el documento');
         }
     }
 
