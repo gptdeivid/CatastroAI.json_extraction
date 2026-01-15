@@ -1,0 +1,26 @@
+[
+  {
+    "CONTRACT_TYPE": "Compra Venta",
+    "DATE": "December 11, 1992",
+    "SELLER": "Nacional Financiera, Sociedad Nacional de Credito, Institucion de Banca de Desarrollo, como Fiduciaria del Fideicomiso denominado Fomento Metropolitano de Monterrey Fomerrey",
+    "SELLER_REPRESENTATIVE": "Isaias Alvarez Olivos",
+    "BUYER": "Misael Soto Esparza and Andrea Fuerte Gaspar",
+    "PROPERTY_LOCATION": "Terreno de el Mezquital de Apodaca, N.L.",
+    "PROPERTY_DETAILS": {
+      "AREA": "459 HS. 2065.00 M2",
+      "URBANIZATION_STATUS": "Urbanizacion progresiva",
+      "CADASTRAL_ZONE": "Region Catastral No.28",
+      "SUBDIVISION_NAME": "Nuevo Amanecer I Sector",
+      "SUBDIVISION_REGISTRY_DETAILS": "No.12, Volumen 43, Libro 3, Seccion Fraccionamientos Unidad Apodaca"
+    },
+    "PAYMENT_DETAILS": {
+      "AMOUNT": "$247,795.00"
+    },
+    "ADDITIONAL_NOTES": [
+      "Both parties declare that there are no causes of nullity or invalidity in the celebration of this contract.",
+      "The property is sold free of all encumbrances and responsibility.",
+      "The buyer buys the described lot with the measures indicated.",
+      "Isaias Alvarez Olivos accredits the character with which he appears with the documentation presented."
+    ]
+  }
+]

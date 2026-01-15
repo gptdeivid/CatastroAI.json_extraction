@@ -1,0 +1,28 @@
+[
+  {
+    "tipo_de_documento": "Acta Constitutiva",
+    "reporte": {
+      "Razón Social": "No se especifica en el documento",
+      "Fecha de Constitución": "No se especifica en el documento",
+      "Objeto Social Principal": "No se especifica en el documento",
+      "Duración de la Sociedad": "No se especifica en el documento",
+      "Domicilio Social": "No se especifica en el documento",
+      "Capital Social": "No se especifica en el documento",
+      "Estructura de Socios o Accionistas": null,
+      "Órgano de Administración": null,
+      "Apoderados Legales y Facultades": null,
+      "Datos de Protocolización Notarial": {
+        "Número de Escritura Pública": "No se especifica en el documento",
+        "Notario Público Número": "No se especifica en el documento",
+        "Nombre del Notario": "No se especifica en el documento",
+        "Lugar de la Notaría": "No se especifica en el documento",
+        "Fecha de la Escritura": "No se especifica en el documento"
+      },
+      "Datos de Inscripción en Registro Público de Comercio": {
+        "Folio Mercantil Electrónico (FME)": "No se especifica en el documento",
+        "Fecha de Inscripción": "No se especifica en el documento",
+        "Lugar de Inscripción": "No se especifica en el documento"
+      }
+    }
+  }
+]

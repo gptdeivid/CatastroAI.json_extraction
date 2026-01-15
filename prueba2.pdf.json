@@ -1,0 +1,55 @@
+[
+  {
+    "tipo_documento": "Contrato de Compraventa / Registro de Propiedad",
+    "reporte_cedula_catastral_registro_propiedad": {
+      "clave_catastral": "4000-10-30",
+      "numero_predio_cuenta_predial": "No se especifica en el documento",
+      "propietarios_registrales": [
+        "Misael Soto Esparza",
+        "Andrea Fuerte Gaspar"
+      ],
+      "domicilio_del_inmueble": {
+        "calle_y_numero": "Lote de terreno marcado con el número 1 de la manzana No. R39",
+        "colonia_o_fraccionamiento": "Fraccionamiento denominado Nuevo Amanecer I Sector (FOMERREY No. 104)",
+        "codigo_postal": "No se especifica en el documento",
+        "municipio_o_alcaldia": "Apodaca",
+        "estado": "Nuevo León"
+      },
+      "superficies_del_inmueble": {
+        "superficie_del_terreno": "115.50 m²",
+        "superficie_de_construccion": "No se especifica en el documento",
+        "superficie_total": "115.50 m²"
+      },
+      "medidas_y_colindancias": {
+        "al_norte": "Mide 8.00 metros y colinda con Calle Bulgaria.",
+        "al_sur": "Mide 8.00 metros y colinda con Lote 25.",
+        "al_este_oriente": "Mide 15.00 metros y colinda con Lote 2.",
+        "al_oeste_poniente": "Mide 15.00 metros y colinda con Calle Gran Bretaña."
+      },
+      "valores_catastrales_de_operacion": {
+        "valor_del_suelo": "No se especifica de forma desglosada",
+        "valor_de_la_construccion": "No se especifica en el documento",
+        "valor_catastral_total_precio_de_la_operacion": "$47,795.00 (Cuarenta y siete mil setecientos noventa y cinco pesos 00/100 M.N.)",
+        "notas_valor": "Monto pactado al 11 de diciembre de 1992 (pesos anteriores a la reforma monetaria de 1993)."
+      },
+      "informacion_adicional_del_documento": {
+        "urbanizacion": "Considerado de urbanización progresiva.",
+        "situacion_juridica": "Se declara libre de gravamen según certificado del Registrador Público.",
+        "pago_isai": "Recibo oficial No. 08099 por la cantidad de $45,000.00 (Cuarenta y cinco mil pesos 00/100 M.N.) pagado en la Tesorería Municipal de Apodaca el 15 de octubre de 1992.",
+        "vendedor": "Nacional Financiera S.N.C. (Banca de Desarrollo) como fiduciaria del Fideicomiso FOMERREY.",
+        "representante_vendedor": "C.P. Isaías Álvarez Olivos, Director Ejecutivo.",
+        "datos_generales_compradores": "Misael Soto Esparza (mexicano, mayor de edad, casado, empleado) y Andrea Fuerte Gaspar (mexicana, mayor de edad, casada, hogar)."
+      },
+      "datos_de_registro_publico": {
+        "folio_real_inscripcion": "Inscripción No. 502, Volumen 47, Libro 11, Sección Propiedad, Unidad Apodaca.",
+        "fecha_de_registro": "18 de enero de 1993",
+        "fecha_de_escritura_contrato": "11 de diciembre de 1992",
+        "lugar_registro": "Primer Distrito, Monterrey, N.L."
+      }
+    },
+    "notas_transcriptor": {
+      "contexto_legal": "El documento es un contrato privado de compraventa que se eleva a registro público. Menciona facultades otorgadas mediante la escritura pública 84,966 ante el Notario Público 15 del Distrito Federal, Eduardo García Villegas.",
+      "sellos_visibles": "Sello de la Tesorería Municipal de Apodaca con leyenda 'PAGADO' con fecha de octubre de 1992; sello del Registro Público de la Propiedad y del Comercio del Primer Distrito de Monterrey, N.L."
+    }
+  }
+]
