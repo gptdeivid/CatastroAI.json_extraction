@@ -13,6 +13,25 @@
 
 Catastro AI está construido como una **aplicación serverless moderna** que combina una SPA (Single Page Application) en el frontend con funciones serverless en el backend, todo orquestado a través de la API de Google Gemini.
 
+### ¿Qué es Intelligent Document Processing (IDP)?
+
+El Procesamiento Inteligente de Documentos (IDP) representa la evolución natural del OCR tradicional. Mientras que el OCR convencional simplemente "lee" texto, el IDP **comprende** el contenido:
+
+- **OCR Tradicional**: "Este documento contiene las palabras: nombre, Juan, Pérez, dirección, Reforma..."
+- **IDP con IA**: "Este es un contrato de compraventa donde Juan Pérez es el comprador y la dirección del inmueble es Av. Reforma 123"
+
+Catastro AI implementa IDP de próxima generación utilizando modelos de lenguaje visual (VLMs) que pueden "ver" documentos completos y extraer información estructurada sin necesidad de reglas predefinidas por tipo de documento.
+
+### Filosofía de Diseño
+
+Este proyecto se construyó siguiendo tres principios fundamentales:
+
+1. **Simplicidad sin Sacrificar Profesionalismo**: Usar Vanilla JS en lugar de frameworks complejos, pero aplicando patrones de diseño enterprise-grade.
+
+2. **Optimización de Costos desde el Diseño**: El caché inteligente no es una optimización posterior; está en el núcleo de la arquitectura. Solo pagas por procesamiento de IA cuando realmente es necesario.
+
+3. **Experiencia de Usuario Primero**: Respuesta instantánea para documentos en caché, feedback visual en cada paso, y zero configuración para el usuario final.
+
 ### Principios de Diseño
 
 1. **Serverless First**: Sin servidores que mantener, escalado automático
@@ -442,6 +461,9 @@ sequenceDiagram
 - 📝 Más código boilerplate
 
 **Justificación**: Para una aplicación de tamaño pequeño-mediano con pocas vistas, Vanilla JS es óptimo.
+
+> [!TIP]
+> **Sobre `node_modules` en un proyecto Vanilla JS**: Es común preguntarse por qué existe un `package.json` y `node_modules` si el frontend es Vanilla. Aquí, Node.js se utiliza exclusivamente para el **Backend (Funciones Serverless)**, la comunicación segura con el SDK de Google Gemini y las herramientas de despliegue. El frontend se sirve como archivos estáticos puros.
 
 ---
 

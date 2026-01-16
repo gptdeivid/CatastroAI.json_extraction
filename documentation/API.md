@@ -1,5 +1,29 @@
 # 📡 Guía de API - Catastro AI
 
+## Introducción
+
+Esta guía documenta la API REST de Catastro AI, el componente central que conecta el frontend con el motor de inteligencia artificial de Google Gemini. La API está diseñada como una **función serverless** que se ejecuta bajo demanda, eliminando la necesidad de mantener servidores activos y permitiendo escalado automático según el tráfico.
+
+### ¿Por qué una API Serverless?
+
+A diferencia de arquitecturas tradicionales con servidores siempre activos, las funciones serverless ofrecen ventajas significativas para casos de uso de procesamiento de documentos:
+
+1. **Costo Eficiente**: Solo pagas por el tiempo de ejecución real (~2-8 segundos por documento)
+2. **Escalado Infinito**: Vercel automáticamente escala a miles de requests concurrentes
+3. **Zero Mantenimiento**: Sin parches de sistema operativo, sin actualizaciones de servidor
+4. **Global por Defecto**: Se ejecuta en múltiples regiones cercanas a tus usuarios
+
+### Arquitectura de la API
+
+```
+Cliente → CDN Edge → Función Serverless → Gemini API
+         (Vercel)    (Node.js 18)       (Google Cloud)
+```
+
+El flujo completo toma típicamente:
+- **Con caché (cliente)**: < 100ms (respuesta instantánea)
+- **Sin caché**: 3-10 segundos (procesamiento completo con Gemini)
+
 ## Índice
 - [Endpoint de Extracción](#endpoint-de-extracción)
 - [Autenticación](#autenticación)
